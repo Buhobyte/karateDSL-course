@@ -31,4 +31,7 @@ Feature: Test for the home page
         And match response.articles[0].createdAt contains '2022'
         And match response.articles[*].favoritesCount contains 0
         And match response..bio contains null
+        And match each response..following == "#boolean"
         And match each response..following == false
+        And match each response..favoritesCount == "#number"
+        And match each response..bios == "#string"

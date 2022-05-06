@@ -3,7 +3,7 @@ Feature: Test for the home page
 
     Background: Define URL:
         Given url 'https://api.realworld.io/api/'
-
+ 
     Scenario: Get all tags
         # Given url 'https://api.realworld.io/api/'
         Given path 'tags'

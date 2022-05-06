@@ -1,9 +1,9 @@
-
+@home
 Feature: Test for the home page
 
     Background: Define URL:
         Given url 'https://api.realworld.io/api/'
- 
+
     Scenario: Get all tags
         # Given url 'https://api.realworld.io/api/'
         Given path 'tags'
@@ -11,6 +11,8 @@ Feature: Test for the home page
         Then status 200
         And match response.tags contains ['welcome']
         And match response.tags !contains ['implementation']
+        And match response.tags contains any ['frontend', 'backend','welcome']
+        # And match response.tags contains only ['welcome']
         And match response.tags == "#array"
         And match each response.tags == "#string"
 
@@ -22,5 +24,11 @@ Feature: Test for the home page
         Given path 'articles'
         When method Get
         Then status 200
-        And match response.articles == '#[3]'
-        And match response.articlesCount == 3
+        And match response.articles == '#[9]'
+        And match response.articlesCount == 9
+        And match response.articlesCount != 8
+        And match response == {articles: "#array", articlesCount: 9}
+        And match response.articles[0].createdAt contains '2022'
+        And match response.articles[*].favoritesCount contains 0
+        And match response..bio contains null
+        And match each response..following == false

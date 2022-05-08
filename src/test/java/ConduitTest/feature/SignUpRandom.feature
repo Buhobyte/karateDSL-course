@@ -14,18 +14,40 @@ Feature: Sign up User RANDOMLY
         Given url apiUrl
 
     Scenario: Sign up user
-        * def usernameRandom = dataGenerator.handleRandomUserName();
-        * def emailRandom = dataGenerator.handleRandomEmail();
+        * def usernameRandom = dataGenerator.getRandomUserName();
+        * def emailRandom = dataGenerator.getRandomEmail();
+        * def jsFuntion =
+            """
+            function(){
+            var DataGenerator = Java.type("helpers.DataGenerator");
+            var generator = new DataGenerator();
+            return generator;
+            }
+            """
+        * def jsFuntion2 = call jsFuntion
+        * def randomEmail2 = jsFuntion2.getRandomEmail2();
         Given path 'users'
         And request
             """
             {
-            "user": {
-            "email": #(emailRandom),
-            "password": "123456",
-            "username": #(usernameRandom)
-            }
+                "user": {
+                    "email": "#(randomEmail2)",
+                    "password": "123456",
+                    "username": "#(usernameRandom)"
+                }
             }
             """
         When method Post
         Then status 200
+        And match response ==
+            """
+            {
+                "user": {
+                    "email": "#(randomEmail2)",
+                    "username": "#(usernameRandom)",
+                    "bio": "##string",
+                    "image": "##string",
+                    "token": "#string"
+                }
+            }
+            """

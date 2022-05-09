@@ -8,7 +8,7 @@ Feature: Articles read other files
         * set articleRequestData.article.title = dataGenerator.getRandomArticleValues().title
         * set articleRequestData.article.description = dataGenerator.getRandomArticleValues().description
         * set articleRequestData.article.body = dataGenerator.getRandomArticleValues().body
-
+        * print articleRequestData
 
     Scenario: Create a new artcile
         Given path 'articles'

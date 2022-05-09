@@ -12,10 +12,10 @@ Feature: Sign up User RANDOMLY
         # }
         # """
         Given url apiUrl
-
-    Scenario: Sign up user
         * def usernameRandom = dataGenerator.getRandomUserName();
         * def emailRandom = dataGenerator.getRandomEmail();
+
+    Scenario: Sign up user
         * def jsFuntion =
             """
             function(){
@@ -51,3 +51,24 @@ Feature: Sign up User RANDOMLY
                 }
             }
             """
+
+    Scenario Outline: Sign up user validate errors with outline - examples
+        Given path 'users'
+        And request
+            """
+            {
+                "user": {
+                    "email": "<email>",
+                    "password": "<password>",
+                    "username": "<username>"
+                }
+            }
+            """
+        When method Post
+        Then status 422
+        And match response == <errorResponse>
+
+        Examples:
+            | email                | password | username          | errorResponse                                      |
+            | #(emailRandom)       | 123456   | buho              | {"errors":{"username":["has already been taken"]}} |
+            | brandom123@gmail.com | 123456   | #(usernameRandom) | {"errors":{"email":["has already been taken"]}}    |

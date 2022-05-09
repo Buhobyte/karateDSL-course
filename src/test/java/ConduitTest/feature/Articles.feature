@@ -1,4 +1,4 @@
-
+@articles
 Feature: Articles
 
     Background: Define URL

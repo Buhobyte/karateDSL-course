@@ -1,4 +1,4 @@
-
+@articles2
 Feature: Articles With Karate-configured
 
     Background: Define URL

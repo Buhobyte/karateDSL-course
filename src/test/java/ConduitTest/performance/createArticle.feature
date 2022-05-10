@@ -17,6 +17,8 @@ Feature: Performance create delete article
         Then status 200
         * def article_id = response.article.slug
 
+        * karate.pause(5000)
+
         Given path 'articles',article_id
         When method Delete
         Then status 204

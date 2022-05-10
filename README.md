@@ -1,9 +1,14 @@
 # karateDSL-course
 
-### Command Run
+### Command Run Test
 
 ```
 mvn test -Dkarate.options="--tags @workdb" -Dkarate.env="qa"
+```
+### Command Run Performance test
+
+```
+mvn clean test-compile gatling:test
 ```
 
 ## AfterFeature

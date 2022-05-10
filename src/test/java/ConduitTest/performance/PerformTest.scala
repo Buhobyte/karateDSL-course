@@ -7,7 +7,7 @@ import scala.concurrent.duration._
 
 class PerformTest extends Simulation {
 
-  val protocol = karateProtocol()
+  val protocol = karateProtocol("/api/articles/{article_id}" -> Nil )
 
 //   protocol.nameResolver = (req, ctx) => req.getHeader("karate-name")
   protocol.runner.karateEnv("qa")
@@ -16,7 +16,7 @@ class PerformTest extends Simulation {
 //   val delete = scenario("delete").exec(karateFeature("classpath:mock/cats-delete.feature@name=delete"))
 
   setUp(
-    createArticle.inject(atOnceUsers(1)).protocols(protocol)
+    createArticle.inject(atOnceUsers(3)).protocols(protocol)
   )
 
 }

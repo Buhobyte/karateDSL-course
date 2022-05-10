@@ -1,4 +1,3 @@
-@home
 Feature: Test for the home page
 
     Background: Define URL:
@@ -26,10 +25,10 @@ Feature: Test for the home page
         When method Get
         Then status 200
         And match response.articles == '#[10]'
-        And match response.articlesCount == 10
+        And match response.articlesCount == 33
         And match response.articlesCount != 8
-        And match response == {articles: "#array", articlesCount: 10}
-        And match response == {articles: "#[10]", articlesCount: 10}
+        And match response == {articles: "#array", articlesCount: 33}
+        And match response == {articles: "#[10]", articlesCount: 33}
         And match response.articles[0].createdAt contains '2022'
         And match response.articles[*].favoritesCount contains 0
         And match response..bio contains null
@@ -57,3 +56,19 @@ Feature: Test for the home page
                 }
             }
             """
+    @home
+    Scenario: Add Likes
+        Given params {limit: 10, offset: 0}
+        Given path 'articles'
+        When method Get
+        Then status 200
+        * def favoritesCount = response.articles[0].favoritesCount
+        * def article = response.articles[0]
+
+        * if (favoritesCount == 0) {karate.call('classpath:helpers/AddLikes.feature',article)}
+        
+        Given params {limit: 10, offset: 0}
+        Given path 'articles'
+        When method Get
+        Then status 200
+        And match response.articles[0].favoritesCount == 1

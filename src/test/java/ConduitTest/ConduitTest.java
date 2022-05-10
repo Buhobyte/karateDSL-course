@@ -27,7 +27,7 @@ class ConduitTest {
     // Results results =
     // Runner.path("classpath:ConduitTest").tags("@articlesReading,@home,@homework,@hooks")
     Results results = Runner.path("classpath:ConduitTest")
-        .tags("@articlesReading,@home,@homework,@hooks,@jsontransform")
+        .tags("@articlesReading,@home,@homework,@hooks,@jsontransform,@convertion")
         .outputCucumberJson(true)
         .karateEnv("qa")
         .parallel(1);

@@ -3,7 +3,7 @@
 ### Command Run
 
 ```
-mvn test -Dkarate.options="--tags @hooks" -Dkarate.env="qa"
+mvn test -Dkarate.options="--tags @jsontransform" -Dkarate.env="qa"
 ```
 
 ## AfterFeature

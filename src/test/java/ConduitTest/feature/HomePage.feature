@@ -25,11 +25,11 @@ Feature: Test for the home page
         Given path 'articles'
         When method Get
         Then status 200
-        And match response.articles == '#[9]'
-        And match response.articlesCount == 9
+        And match response.articles == '#[10]'
+        And match response.articlesCount == 10
         And match response.articlesCount != 8
-        And match response == {articles: "#array", articlesCount: 9}
-        And match response == {articles: "#[9]", articlesCount: 9}
+        And match response == {articles: "#array", articlesCount: 10}
+        And match response == {articles: "#[10]", articlesCount: 10}
         And match response.articles[0].createdAt contains '2022'
         And match response.articles[*].favoritesCount contains 0
         And match response..bio contains null

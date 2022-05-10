@@ -93,5 +93,5 @@ Feature: Test for the home page
 
         And retry until response.articles[0].favoritesCount == 1
         When method Get
-        * eval sleep(10000)
+        * eval sleep(5000)
         Then status 200

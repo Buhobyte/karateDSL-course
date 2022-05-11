@@ -7,7 +7,7 @@ function fn() {
   var config = {
     apiUrl: 'https://conduit.productionready.io/api/'
   }
-  if (env == 'dev') {
+  if (env == 'perform') {
     config.userEmail = 'buho@gmail.com'
     config.userPassword = '123456'
   } else if (env == 'qa') {

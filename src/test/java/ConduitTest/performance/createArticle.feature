@@ -13,13 +13,14 @@ Feature: Performance create delete article
         * configure headers = {"Authorization": #('Token '+ __gatling.Token)}
         Given path 'articles'
         And request articleRequestData
+        And header karate-name = 'Create Article '+ __gatling.Title
         When method Post
         Then status 200
         * def article_id = response.article.slug
 
-# * karate.pause(5000)
+        * karate.pause(5000)
 
-# Given path 'articles',article_id
-# When method Delete
-# Then status 204
+        Given path 'articles',article_id
+        When method Delete
+        Then status 204
 

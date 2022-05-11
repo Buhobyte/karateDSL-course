@@ -13,7 +13,7 @@ class PerformTest extends Simulation {
 
   val protocol = karateProtocol("/api/articles/{article_id}" -> Nil )
 
-//   protocol.nameResolver = (req, ctx) => req.getHeader("karate-name")
+  protocol.nameResolver = (req, ctx) => req.getHeader("karate-name")
   protocol.runner.karateEnv("perform")
 
   // strategy circular() restart to init data from articles.csv

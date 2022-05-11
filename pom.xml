@@ -108,6 +108,7 @@
                 <version>${gatling.plugin.version}</version>
                 <configuration>
                     <simulationsFolder>src/test/java/ConduitTest/performance</simulationsFolder>
+                    <configFolder>src/test/java/ConduitTest/performance/data</configFolder>
                 </configuration>
                 <executions>
                     <execution>

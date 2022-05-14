@@ -31,18 +31,23 @@ class ConduitTest {
         .outputCucumberJson(true)
         .karateEnv("qa")
         .parallel(1);
-    generateReport(results.getReportDir());
+        // generateReport(results.getReportDir());
+   
     assertEquals(0, results.getFailCount(), results.getErrorMessages());
 
   }
 
   public static void generateReport(String karateOutputPath) {
-    Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[] { "json" }, true);
-    List<String> jsonPaths = new ArrayList<>(jsonFiles.size());
-    jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
-    Configuration config = new Configuration(new File("target"), "Conduit Application");
-    ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
-    reportBuilder.generateReports();
+    try {
+        Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[] { "json" }, true);
+        List<String> jsonPaths = new ArrayList<>(jsonFiles.size());
+        jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
+        Configuration config = new Configuration(new File("target"), "Conduit Application");
+        ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
+        reportBuilder.generateReports();
+    } catch (Exception e) {
+        System.out.print("[Generando reporte con cucumber]: " +e);
+    }
   }
 
 }

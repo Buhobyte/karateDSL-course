@@ -50,7 +50,7 @@ class ConduitTest {
 mvn archetype:generate \
 -DarchetypeGroupId=com.intuit.karate \
 -DarchetypeArtifactId=karate-archetype \
--DarchetypeVersion=1.1.0 \
+-DarchetypeVersion=1.2.0 \
 -DgroupId=com.buhobyte \
 -DartifactId=KarateCourse
 ```

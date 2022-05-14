@@ -31,7 +31,7 @@ class ConduitTest {
         .outputCucumberJson(true)
         .karateEnv("qa")
         .parallel(1);
-        // generateReport(results.getReportDir());
+        generateReport(results.getReportDir());
    
     assertEquals(0, results.getFailCount(), results.getErrorMessages());
 

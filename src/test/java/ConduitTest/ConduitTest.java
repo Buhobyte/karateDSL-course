@@ -27,10 +27,10 @@ class ConduitTest {
     // Results results =
     // Runner.path("classpath:ConduitTest").tags("@articlesReading,@home,@homework,@hooks")
     Results results = Runner.path("classpath:ConduitTest")
-        .tags("@articlesReading,@home,@homework,@hooks,@jsontransform,@convertion,@workdb")
+        .tags("~@ignore")
         .outputCucumberJson(true)
         .karateEnv("qa")
-        .parallel(1);
+        .parallel(5);
         generateReport(results.getReportDir());
    
     assertEquals(0, results.getFailCount(), results.getErrorMessages());

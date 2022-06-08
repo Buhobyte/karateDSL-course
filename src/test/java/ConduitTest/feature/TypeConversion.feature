@@ -6,6 +6,7 @@ Feature: Type Conversion (casting)
         * def json = {"bar": #(foo+'')}
         * match json == {"bar": "10"}
 
+        @strToNum
     Scenario: Convert String tu number
         * def foo = "10"
         # * def json = {"bar": #(foo*1)}
